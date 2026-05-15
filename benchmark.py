@@ -1,6 +1,5 @@
 import time
 import random
-import urllib.request
 import os
 import json
 from bloom_filter import BloomFilter
