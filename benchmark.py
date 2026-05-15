@@ -7,7 +7,7 @@ from bloom_filter import BloomFilter
 # 1. NOMINAL DATA (Unstructured Text)
 
 
-def load_word_dataset(file_path):
+def load_word_dataset(file_path, limit):
     with open(file_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
     word_list = list(data.keys())
