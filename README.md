@@ -25,6 +25,7 @@ The first method is preferred if your cluster nodes maintain outbound internet c
 2. Initialise the Conda environment
 3. Clone the project from git
 4. Do a batch submission for a large MAX_LIM size
+
 E.g.:
 `#!/bin/bash -l
 #SBATCH --job-name=bloom_benchmark
@@ -34,6 +35,7 @@ E.g.:
 #SBATCH --nodes=1
 #SBATCH --ntasks=1`
 5. Submit it to the HPC queue:
+
 E.g:`sbatch submit_job.sh`
 
 ## Team Members
