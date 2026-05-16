@@ -10,13 +10,13 @@ The Bloom filter, a probability data structure used to determine if an entry is 
 
 ## Getting Started
 
-Project Structure
+### Project Structure
 * `bloom_filter.py`: The core implementation of the Bloom Filter data structure using optimized hash functions.
 * `benchmark.py`: The main testing script that generates synthetic data, loads external datasets, and measures performance metrics.
 * `job.sh`: The SLURM batch script configured for submitting the benchmark job to the **Wice** HPC cluster.
 * `words_dictionary.json`: The external dataset containing approximately 370,000 common English words used for nominal text data testing. *(Note: This file must be downloaded and placed in the root directory before running).*
 
-Datasets Evaluated
+###Datasets Evaluated
 The benchmarking suite tests the Bloom Filter against three distinct data profiles, scaling up to 200,000 items:
 1. **Nominal Data (Unstructured Text):** Real English words loaded from the JSON dictionary.
 2. **Nominal Data (Structured Patterns):** Synthetically generated 20-character DNA sequences (A, C, G, T).
