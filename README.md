@@ -12,7 +12,7 @@ Since this project runs on HPC supercomputer, it relies on an isolated environme
 #### Environment Manager: Conda
 #### Runtime Environment: Python 3.8+
 #### Libraries and Modules: Math, Hashlib, Time, Random, JSON, Bloom_filter, BloomFilter
-### Dataset: words_dictionary.json
+#### Dataset: words_dictionary.json
 
 ## Installing
 You can pull or transfer the program files into your target HPC.
