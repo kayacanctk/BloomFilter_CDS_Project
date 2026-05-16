@@ -24,11 +24,11 @@ The benchmarking suite tests the Bloom Filter against three distinct data profil
 
 ### Dependencies
 Since this project runs on HPC supercomputer, it relies on an isolated environment to manage dependencies.
-#### Platform Environment: Supercomputer Cluster
-#### Environment Manager: Conda
-#### Runtime Environment: Python 3.8+
-#### Libraries and Modules: Math, Hashlib, Time, Random, JSON, Bloom_filter, BloomFilter
-#### Dataset: words_dictionary.json
+* Platform Environment: Supercomputer Cluster
+* Environment Manager: Conda
+* Runtime Environment: Python 3.8+
+* Libraries and Modules: Math, Hashlib, Time, Random, JSON, Bloom_filter, BloomFilter
+* Dataset: words_dictionary.json
 
 ## Installing
 You can pull or transfer the program files into your target HPC.
