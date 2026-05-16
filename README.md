@@ -26,15 +26,15 @@ The first method is preferred if your cluster nodes maintain outbound internet c
 3. Clone the project from git
 4. Do a batch submission for a large MAX_LIM size
 E.g.:
-#!/bin/bash -l
+`#!/bin/bash -l
 #SBATCH --job-name=bloom_benchmark
 #SBATCH --account=lp_h_ds_students
 #SBATCH --cluster=wice
 #SBATCH --time=00:15:00
 #SBATCH --nodes=1
-#SBATCH --ntasks=1
+#SBATCH --ntasks=1`
 5. Submit it to the HPC queue:
-E.g:sbatch submit_job.sh
+E.g:`sbatch submit_job.sh`
 
 ## Team Members
 * Sefa Kayacan Citak
