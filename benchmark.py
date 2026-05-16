@@ -1,68 +1,62 @@
+"""Tests the Bloom Filter insertions and searches under real-life conditions"""
 import time
 import random
-import os
 import json
 from bloom_filter import BloomFilter
 
-# 1. NOMINAL DATA (Unstructured Text)
-
-
 def load_word_dataset(file_path, limit):
-    with open(file_path, 'r', encoding='utf-8') as f:
+    """Reads a raw JSON dictionary file extracts just words, grabs a clean slice up to the limit"""
+    with open(file_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     word_list = list(data.keys())
     actual_limit = min(limit, len(word_list))
     return word_list[:actual_limit]
 
+
 def generate_dna_sequences(limit, length=20):
     """Generates synthetic DNA sequences (Structured Nominal Data)."""
     print(f"Generating {limit} nominal data points (DNA sequences)...")
-    bases = ['A', 'C', 'G', 'T']
-    
-    return [''.join(random.choices(bases, k=length)) for i in range(limit)]
+    bases = ["A", "C", "G", "T"]
+    return ["".join(random.choices(bases, k=length)) for i in range(limit)]
+
 
 def generate_numerical_data(limit):
     """Generates massive random integers to represent Numerical Data (e.g., Bank IDs)."""
     print(f"Generating {limit} numerical data points (Random IDs)...")
     return [random.randint(10000000, 99999999) for _ in range(limit)]
 
+
 def run_benchmark(data_list, dataset_name):
     """Runs the insertion and search tests and prints out the timing."""
-    test_sizes = [10000, 50000, 100000, 200000] 
-    
+    test_sizes = [10000, 50000, 100000, 200000]
     print(f"\n{'='*45}")
     print(f"  STARTING BENCHMARK: {dataset_name.upper()}")
     print(f"{'='*45}")
-    
+
     for size in test_sizes:
         if size > len(data_list):
             print(f"Warning: Not enough data to test size {size}. Skipping.")
             break
-            
         test_data = data_list[:size]
-        
         bf = BloomFilter(expected_items=size, fp_rate=0.05)
-        
         start_time = time.time()
         for item in test_data:
             bf.add(item)
         insert_time = time.time() - start_time
-        
         start_time = time.time()
         for item in test_data:
             bf.check(item)
         search_time = time.time() - start_time
-        
-        print(f"Size: {size:<7} | Insert: {insert_time:.4f} sec | Search: {search_time:.4f} sec")
+        print(
+            f"Size: {size:<7} | Insert: {insert_time:.4f} sec | Search: {search_time:.4f} sec"
+        )
+
 
 if __name__ == "__main__":
-
     MAX_LIMIT = 200000
-    
-    nominal_text_data = load_word_dataset('words_dictionary.json', MAX_LIMIT)
+    nominal_text_data = load_word_dataset("words_dictionary.json", MAX_LIMIT)
     nominal_pattern_data = generate_dna_sequences(MAX_LIMIT)
     numerical_data = generate_numerical_data(MAX_LIMIT)
-    
     run_benchmark(nominal_text_data, "Nominal Data (English Words)")
     run_benchmark(nominal_pattern_data, "Nominal Data (DNA Sequences)")
     run_benchmark(numerical_data, "Numerical Data (Random IDs)")
